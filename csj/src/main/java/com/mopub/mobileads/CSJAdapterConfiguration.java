@@ -2,6 +2,7 @@ package com.mopub.mobileads;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.mopub.common.BaseAdapterConfiguration;
 import com.mopub.common.OnNetworkInitializationFinishedListener;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class CSJAdapterConfiguration extends BaseAdapterConfiguration {
+    private static final String TAG = "CSJAdapterConfiguration";
     private static final String ADAPTER_VERSION = "2.1.5.0";
     private static final String MOPUB_NETWORK_NAME = "csj_audience_network";
 
@@ -51,16 +53,18 @@ public class CSJAdapterConfiguration extends BaseAdapterConfiguration {
 
     @Override
     public void initializeNetwork(@NonNull Context context, @Nullable Map<String, String> configuration, @NonNull OnNetworkInitializationFinishedListener listener) {
+        Log.i(TAG, "initializeNetwork: ");
+        
         Preconditions.checkNotNull(context);
         Preconditions.checkNotNull(listener);
         boolean networkInitializationSucceeded = false;
-        Class var5 = CSJAdapterConfiguration.class;
         synchronized(CSJAdapterConfiguration.class) {
             try {
                 //step1:初始化sdk
                 String appid = configuration.get(APP_ID_KEY);
                 String appName = configuration.get(APP_NAME_KEY);
 
+                Log.i(TAG, "initializeNetwork: appid:"+appid + " appName:"+appName);
                 TTAdManagerHolder.init(context,appid,appName);
                 networkInitializationSucceeded = true;
             } catch (Exception var8) {

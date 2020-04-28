@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void MopubInit(){
         Map<String, String> mediatedNetworkConfiguration1 = new HashMap<>();
-        SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder("AD_UNIT_ID")
+        SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(rewardId)
                 .withMediationSettings()
 //                .withAdditionalNetworks(CustomAdapterConfiguration.class.getName())
 //                .withMediatedNetworkConfiguration(CustomAdapterConfiguration1.class.getName(), mediatedNetworkConfiguration1)
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onRewardedVideoLoadFailure(String adUnitId, MoPubErrorCode errorCode) {
-                Log.i(TAG, "onRewardedVideoLoadFailure: ");
+                Log.i(TAG, "onRewardedVideoLoadFailure: adUnitId:"+adUnitId + " errorCode:"+errorCode );
                 isRewardLoaded = false;
             }
 
