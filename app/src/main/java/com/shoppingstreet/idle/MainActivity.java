@@ -15,6 +15,19 @@ import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTAdSdk;
 import com.bytedance.sdk.openadsdk.TTFullScreenVideoAd;
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
+import com.mopub.common.MoPub;
+import com.mopub.common.MoPubReward;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.SdkInitializationListener;
+import com.mopub.common.logging.MoPubLog;
+import com.mopub.mobileads.MoPubErrorCode;
+import com.mopub.mobileads.MoPubInterstitial;
+import com.mopub.mobileads.MoPubRewardedVideoListener;
+import com.mopub.mobileads.MoPubRewardedVideos;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
     private TTRewardVideoAd mttRewardVideoAd;
     private TTFullScreenVideoAd mTTFullScreenVideoAd;
 
+    private String rewardId = "22bba3a92899446f9c8db8a43217b9c0";
+    private String interId = "bd4b5c57ec774540abb73dfa938a6a90";
+    private boolean isRewardLoaded = false;
+
+    private MoPubInterstitial moPubInterstitial;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +68,122 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        CSJInit(this);
-        CSJLoadRewardAd(this);
-        CSJLoadInterAd(this);
+        MopubInit();
+//        CSJInit(this);
+//        CSJLoadRewardAd(this);
+//        CSJLoadInterAd(this);
+    }
+
+    private void MopubInit(){
+        Map<String, String> mediatedNetworkConfiguration1 = new HashMap<>();
+        SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder("AD_UNIT_ID")
+                .withMediationSettings()
+//                .withAdditionalNetworks(CustomAdapterConfiguration.class.getName())
+//                .withMediatedNetworkConfiguration(CustomAdapterConfiguration1.class.getName(), mediatedNetworkConfiguration1)
+                .withLogLevel(MoPubLog.LogLevel.DEBUG)
+                .withLegitimateInterestAllowed(false)
+                .build();
+
+        MoPub.setLocationAwareness(MoPub.LocationAwareness.TRUNCATED);
+        MoPub.setLocationPrecision(4);
+        MoPub.initializeSdk(this, sdkConfiguration, initSdkListener());
+    }
+
+    private SdkInitializationListener initSdkListener() {
+        return new SdkInitializationListener() {
+            @Override
+            public void onInitializationFinished() {
+           /* MoPub SDK initialized.
+           Check if you should show the consent dialog here, and make your ad requests. */
+                setRewardListener();
+                MopubLoadReward();
+
+                setInterListener();
+                MopubLoadInter();
+            }
+        };
+    }
+
+    private void MopubLoadReward(){
+        MoPubRewardedVideos.loadRewardedVideo(rewardId);
+    }
+
+    private void setRewardListener(){
+        MoPubRewardedVideos.setRewardedVideoListener(new MoPubRewardedVideoListener() {
+            @Override
+            public void onRewardedVideoLoadSuccess(String adUnitId) {
+                Log.i(TAG, "onRewardedVideoLoadSuccess: ");
+                isRewardLoaded = true;
+            }
+
+            @Override
+            public void onRewardedVideoLoadFailure(String adUnitId, MoPubErrorCode errorCode) {
+                Log.i(TAG, "onRewardedVideoLoadFailure: ");
+                isRewardLoaded = false;
+            }
+
+            @Override
+            public void onRewardedVideoStarted(String adUnitId) {
+                Log.i(TAG, "onRewardedVideoStarted: ");
+            }
+
+            @Override
+            public void onRewardedVideoPlaybackError(String adUnitId, MoPubErrorCode errorCode) {
+                Log.i(TAG, "onRewardedVideoPlaybackError: ");
+            }
+
+            @Override
+            public void onRewardedVideoClicked(String adUnitId) {
+                Log.i(TAG, "onRewardedVideoClicked: ");
+            }
+
+            @Override
+            public void onRewardedVideoClosed(String adUnitId) {
+                Log.i(TAG, "onRewardedVideoClosed: ");
+                isRewardLoaded = false;
+            }
+
+            @Override
+            public void onRewardedVideoCompleted(Set<String> adUnitIds, MoPubReward reward) {
+                Log.i(TAG, "onRewardedVideoCompleted: ");
+            }
+        });
+    }
+
+    private void MopubLoadInter(){
+        if(moPubInterstitial!=null){
+            moPubInterstitial.load();
+        }
+    }
+
+    private void setInterListener(){
+        moPubInterstitial = new MoPubInterstitial(this,interId);
+        moPubInterstitial.setInterstitialAdListener(new MoPubInterstitial.InterstitialAdListener() {
+            @Override
+            public void onInterstitialLoaded(MoPubInterstitial interstitial) {
+                Log.i(TAG, "onInterstitialLoaded: ");
+            }
+
+            @Override
+            public void onInterstitialFailed(MoPubInterstitial interstitial, MoPubErrorCode errorCode) {
+                Log.i(TAG, "onInterstitialFailed: ");
+            }
+
+            @Override
+            public void onInterstitialShown(MoPubInterstitial interstitial) {
+                Log.i(TAG, "onInterstitialShown: ");
+            }
+
+            @Override
+            public void onInterstitialClicked(MoPubInterstitial interstitial) {
+                Log.i(TAG, "onInterstitialClicked: ");
+            }
+
+            @Override
+            public void onInterstitialDismissed(MoPubInterstitial interstitial) {
+                Log.i(TAG, "onInterstitialDismissed: ");
+            }
+        });
     }
 
     private void CSJInit(Context mContext){
