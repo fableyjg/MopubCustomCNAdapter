@@ -20,6 +20,7 @@ import com.mopub.common.MoPubReward;
 import com.mopub.common.SdkConfiguration;
 import com.mopub.common.SdkInitializationListener;
 import com.mopub.common.logging.MoPubLog;
+import com.mopub.mobileads.CSJAdapterConfiguration;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(rewardId)
                 .withMediationSettings()
 //                .withAdditionalNetworks(CustomAdapterConfiguration.class.getName())
-//                .withMediatedNetworkConfiguration(CustomAdapterConfiguration1.class.getName(), mediatedNetworkConfiguration1)
+                .withMediatedNetworkConfiguration(CSJAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
                 .withLogLevel(MoPubLog.LogLevel.DEBUG)
                 .withLegitimateInterestAllowed(false)
                 .build();
