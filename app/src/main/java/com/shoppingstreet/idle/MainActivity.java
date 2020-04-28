@@ -49,10 +49,15 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_inter_show).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mTTFullScreenVideoAd!=null){
-                    mTTFullScreenVideoAd.showFullScreenVideoAd(MainActivity.this);
+//                if(mTTFullScreenVideoAd!=null){
+//                    mTTFullScreenVideoAd.showFullScreenVideoAd(MainActivity.this);
+//                }else {
+//                    Log.i(TAG, "onClick: inter ad not loaded");
+//                }
+                if(moPubInterstitial!=null){
+                    moPubInterstitial.show();
                 }else {
-                    Log.i(TAG, "onClick: inter ad not loaded");
+                    Log.i(TAG, "onClick: mopub inter ad not loaded");
                 }
             }
         });
@@ -60,10 +65,15 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_reward_show).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mttRewardVideoAd!=null){
-                    mttRewardVideoAd.showRewardVideoAd(MainActivity.this);
+//                if(mttRewardVideoAd!=null){
+//                    mttRewardVideoAd.showRewardVideoAd(MainActivity.this);
+//                }else {
+//                    Log.i(TAG, "onClick: reward ad not loaded");
+//                }
+                if(isRewardLoaded){
+                    MoPubRewardedVideos.showRewardedVideo(rewardId);
                 }else {
-                    Log.i(TAG, "onClick: reward ad not loaded");
+                    Log.i(TAG, "onClick: mopub reward ad not loaded");
                 }
             }
         });

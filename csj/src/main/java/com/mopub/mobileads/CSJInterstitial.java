@@ -29,6 +29,7 @@ public class CSJInterstitial extends CustomEventInterstitial {
     private TTFullScreenVideoAd mTTFullScreenVideoAd;
     private Context mContext;
 
+    private CSJAdapterConfiguration mCSJAdapterConfiguration = new CSJAdapterConfiguration();
     //1.定义一个插屏回调的接口
     private CustomEventInterstitialListener mInterstitialListener;
 
@@ -50,6 +51,8 @@ public class CSJInterstitial extends CustomEventInterstitial {
             mTTAdNative = ttAdManager.createAdNative(mContext);
 
             if(extrasAreValid(serverExtras)){
+                mCSJAdapterConfiguration.setCachedInitializationParameters(context, serverExtras);
+
                 //4.解析出服务端id
                 String adUnitId = serverExtras.get(AD_UNIT_ID_KEY);
                 String adOrientation = serverExtras.get(APP_AD_ORIENTATION).trim();
