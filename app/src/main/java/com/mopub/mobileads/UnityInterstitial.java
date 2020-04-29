@@ -75,7 +75,6 @@ public class UnityInterstitial extends CustomEventInterstitial implements IUnity
             MoPubLog.log(AdapterLogEvent.SHOW_FAILED, new Object[]{ADAPTER_NAME, MoPubErrorCode.NETWORK_NO_FILL.getIntCode(), MoPubErrorCode.NETWORK_NO_FILL});
             MoPubLog.log(AdapterLogEvent.CUSTOM, new Object[]{ADAPTER_NAME, "Attempted to show Unity interstitial video before it was available."});
         }
-
     }
 
     protected void onInvalidate() {
