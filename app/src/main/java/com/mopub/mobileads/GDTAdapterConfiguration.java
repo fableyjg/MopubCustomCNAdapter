@@ -53,8 +53,8 @@ public class GDTAdapterConfiguration extends BaseAdapterConfiguration {
         Preconditions.checkNotNull(context);
         Preconditions.checkNotNull(listener);
         boolean networkInitializationSucceeded = false;
-        Class var5 = UnityAdsAdapterConfiguration.class;
-        synchronized(UnityAdsAdapterConfiguration.class) {
+        Class var5 = GDTAdapterConfiguration.class;
+        synchronized(GDTAdapterConfiguration.class) {
             try {
 //                if (UnityAds.isInitialized()) {
 //                    networkInitializationSucceeded = true;
