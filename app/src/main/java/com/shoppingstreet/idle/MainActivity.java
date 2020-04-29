@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
         SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(rewardId)
                 .withMediationSettings()
                 .withAdditionalNetwork(CSJAdapterConfiguration.class.getName())
-//                .withAdditionalNetwork(GDTAdapterConfiguration.class.getName())
+                .withAdditionalNetwork(GDTAdapterConfiguration.class.getName())
                 .withMediatedNetworkConfiguration(CSJAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
-//                .withMediatedNetworkConfiguration(GDTAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
+                .withMediatedNetworkConfiguration(GDTAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
                 .withLogLevel(MoPubLog.LogLevel.DEBUG)
                 .withLegitimateInterestAllowed(false)
                 .build();
@@ -110,11 +110,11 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationFinished() {
            /* MoPub SDK initialized.
            Check if you should show the consent dialog here, and make your ad requests. */
-//                setRewardListener();
-//                MopubLoadReward();
+                setRewardListener();
+                MopubLoadReward();
 
-                setInterListener();
-                MopubLoadInter();
+//                setInterListener();
+//                MopubLoadInter();
             }
         };
     }
