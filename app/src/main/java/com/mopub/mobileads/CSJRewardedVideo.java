@@ -2,7 +2,6 @@ package com.mopub.mobileads;
 
 
 import android.app.Activity;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.bytedance.sdk.openadsdk.AdSlot;
@@ -35,7 +34,6 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
     private static final String ADAPTER_NAME = CSJRewardedVideo.class.getSimpleName();
 
     private Activity mActivity;
-//    private TTAdNative mTTAdNative;
     private TTRewardVideoAd mttRewardVideoAd;
 
     private boolean isTTRewardVideoLoaded = false;
@@ -45,6 +43,7 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
      */
     private static AtomicBoolean sIsInitialized;
     private String mAdUnitRewardId;
+    private int adOrientation = TTAdConstant.VERTICAL;
 
 
     private CSJAdapterConfiguration mCSJAdapterConfiguration;
@@ -89,6 +88,12 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
             Log.i(TAG, "checkAndInitializeSdk: appid "+appid);
             TTAdManagerHolder.init(mActivity, appid, appName);
             mAdUnitRewardId = serverExtras.get(AD_UNIT_REWARD_ID_KEY);
+            int oriTation = Integer.parseInt(serverExtras.get(APP_AD_ORIENTATION));
+            if(oriTation == 2){
+                adOrientation = TTAdConstant.HORIZONTAL;
+            }else {
+                adOrientation = TTAdConstant.VERTICAL;
+            }
 
             Log.i(TAG, "checkAndInitializeSdk: appid " + appid + " mAdUnitRewardId:"+mAdUnitRewardId);
             mCSJAdapterConfiguration.setCachedInitializationParameters(launcherActivity,serverExtras);
@@ -100,8 +105,7 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
 
     @Override
     protected void loadWithSdkInitialized(@NonNull Activity activity, @NonNull Map<String, Object> localExtras, @NonNull Map<String, String> serverExtras) throws Exception {
-        Log.i(TAG, "loadWithSdkInitialized: 11111111111");
-
+        Log.i(TAG, "loadWithSdkInitialized");
         mWeakActivity = new WeakReference<>(activity);
         TTAdManager mTTAdManager = TTAdManagerHolder.get();
         TTAdNative mTTAdNative = mTTAdManager.createAdNative(activity.getApplicationContext());
@@ -115,21 +119,11 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
                 .setRewardAmount(3)  // The number of rewards in rewarded video ad
                 .setUserID("user123")//User ID, a required parameter for rewarded video ads
                 .setMediaExtra("media_extra") //optional parameter
-                .setOrientation(TTAdConstant.VERTICAL) //Set how you wish the video ad to be displayed, choose from TTAdConstant.HORIZONTAL or TTAdConstant.VERTICAL
+                .setOrientation(adOrientation) //Set how you wish the video ad to be displayed, choose from TTAdConstant.HORIZONTAL or TTAdConstant.VERTICAL
                 .build();
 
         //load ad
         mTTAdNative.loadRewardVideoAd(adSlot, mLoadRewardVideoAdListener);
-
-
-//        if (extrasAreValid(serverExtras)) {
-//            Log.i(TAG, "loadWithSdkInitialized: 2222222222222   mAdUnitRewardId:"+ mAdUnitRewardId);
-//            //4.解析出服务端id
-//            mAdUnitRewardId = serverExtras.get(AD_UNIT_REWARD_ID_KEY);
-//            String adOrientation = serverExtras.get(APP_AD_ORIENTATION).trim();
-//            loadAd(mAdUnitRewardId, Integer.parseInt(adOrientation));
-////            loadAd(adUnitId, TTAdConstant.VERTICAL);
-//        }
     }
 
     @NonNull
@@ -173,7 +167,6 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
         public void onError(int code, String message) {
             MoPubRewardedVideoManager.onRewardedVideoLoadFailure(CSJRewardedVideo.class, getAdNetworkId(), getMoPubErrorCode(code));
             Log.i(TAG, "onError: Loading Rewarded Video creative encountered an error:"+code + " message:"+message);
-//            MoPubLog.log(LOAD_FAILED, ADAPTER_NAME, "Loading Rewarded Video creative encountered an error: " + mapErrorCode(code).toString() + ",error message:" + message);
         }
 
         @Override
@@ -187,7 +180,6 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
                         getAdNetworkId());
             } else {
                 MoPubRewardedVideoManager.onRewardedVideoLoadFailure(CSJRewardedVideo.class, getAdNetworkId(),MoPubErrorCode.NETWORK_NO_FILL);
-//                MoPubLog.log(LOAD_FAILED, ADAPTER_NAME, " TTRewardVideoAd is null !");
                 Log.i(TAG, "onRewardVideoAdLoad: TTRewardVideoAd is null");
             }
         }
@@ -196,8 +188,7 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
         public void onRewardVideoCached() {
             MoPubLog.log(CUSTOM, ADAPTER_NAME, "TTRewardVideoAd onRewardVideoCached...");
             if (mWeakActivity != null && mWeakActivity.get() != null)
-//                Toast.makeText(mWeakActivity.get(), "onRewardVideoCached.....", Toast.LENGTH_SHORT).show();
-                Log.i(TAG, "onRewardVideoCached: ");
+               Log.i(TAG, "onRewardVideoCached: ");
 
         }
     };
@@ -207,7 +198,6 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
         public void onAdShow() {
             MoPubRewardedVideoManager.onRewardedVideoStarted(CSJRewardedVideo.class,mAdUnitRewardId);
             if (mWeakActivity != null && mWeakActivity.get() != null)
-//                Toast.makeText(mWeakActivity.get(), "TTRewardVideoAd onAdShow.....", Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "onAdShow: ");
             MoPubLog.log(CUSTOM, ADAPTER_NAME, "TTRewardVideoAd onAdShow...");
         }

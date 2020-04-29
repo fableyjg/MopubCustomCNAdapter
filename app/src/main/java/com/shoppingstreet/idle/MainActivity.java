@@ -86,12 +86,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void MopubInit(){
+        //這裡不添加，不初始化 csj需要手動配置
         Map<String, String> mediatedNetworkConfiguration1 = new HashMap<>();
         SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(rewardId)
                 .withMediationSettings()
-//                .withAdditionalNetwork(TestAdapterConfiguration.class.getName())
                 .withAdditionalNetwork(CSJAdapterConfiguration.class.getName())
-                .withMediatedNetworkConfiguration(TestAdapterConfiguration.class.getName(),mediatedNetworkConfiguration1)
                 .withMediatedNetworkConfiguration(CSJAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
                 .withLogLevel(MoPubLog.LogLevel.DEBUG)
                 .withLegitimateInterestAllowed(false)

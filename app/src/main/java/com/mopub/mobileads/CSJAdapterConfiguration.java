@@ -53,28 +53,6 @@ public class CSJAdapterConfiguration extends BaseAdapterConfiguration {
 
     @Override
     public void initializeNetwork(@NonNull Context context, @Nullable Map<String, String> configuration, @NonNull OnNetworkInitializationFinishedListener listener) {
-//        synchronized(UnityAdsAdapterConfiguration.class) {
-//            try {
-//                if (UnityAds.isInitialized()) {
-//                    networkInitializationSucceeded = true;
-//                } else if (configuration != null && context instanceof Activity) {
-//                    UnityRouter.initUnityAds(configuration, (Activity)context);
-//                    networkInitializationSucceeded = true;
-//                } else {
-//                    MoPubLog.log(AdapterLogEvent.CUSTOM, new Object[]{ADAPTER_NAME, "Unity Ads initialization not started. Context is not an Activity. Note that initialization on the first app launch is a no-op."});
-//                }
-//            } catch (Exception var8) {
-//                MoPubLog.log(AdapterLogEvent.CUSTOM_WITH_THROWABLE, new Object[]{"Initializing Unity Ads has encountered an exception.", var8});
-//            }
-//        }
-//
-//        if (networkInitializationSucceeded) {
-//            listener.onNetworkInitializationFinished(UnityAdsAdapterConfiguration.class, MoPubErrorCode.ADAPTER_INITIALIZATION_SUCCESS);
-//        } else {
-//            listener.onNetworkInitializationFinished(UnityAdsAdapterConfiguration.class, MoPubErrorCode.ADAPTER_CONFIGURATION_ERROR);
-//        }
-
-
         Log.i(TAG, "initializeNetwork: configuration " + configuration.toString());
         Preconditions.checkNotNull(context);
         Preconditions.checkNotNull(listener);
