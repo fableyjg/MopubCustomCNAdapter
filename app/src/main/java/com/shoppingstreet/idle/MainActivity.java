@@ -89,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
         Map<String, String> mediatedNetworkConfiguration1 = new HashMap<>();
         SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(rewardId)
                 .withMediationSettings()
-//                .withAdditionalNetworks(CustomAdapterConfiguration.class.getName())
+//                .withAdditionalNetwork(TestAdapterConfiguration.class.getName())
+                .withAdditionalNetwork(CSJAdapterConfiguration.class.getName())
+                .withMediatedNetworkConfiguration(TestAdapterConfiguration.class.getName(),mediatedNetworkConfiguration1)
                 .withMediatedNetworkConfiguration(CSJAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
                 .withLogLevel(MoPubLog.LogLevel.DEBUG)
                 .withLegitimateInterestAllowed(false)
