@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CSJInterstitial extends CustomEventInterstitial {
 
-    private static final String TAG = "CSJInterstitial";
+    private static final String TAG = "CSJInterstitial yjg";
 
     public static final String AD_UNIT_ID_KEY = "adUnitID";
     public static final String APP_ID_KEY = "appId";
@@ -35,7 +35,7 @@ public class CSJInterstitial extends CustomEventInterstitial {
 
     @Override
     protected void loadInterstitial(Context context, CustomEventInterstitialListener customEventInterstitialListener, Map<String, Object> localExtras, Map<String, String> serverExtras) {
-
+        Log.i(TAG, "loadInterstitial: ");
         mContext = context;
         mInterstitialListener = customEventInterstitialListener;
         if (!sIsInitialized.getAndSet(true)) {
@@ -44,6 +44,7 @@ public class CSJInterstitial extends CustomEventInterstitial {
             String appName = serverExtras.get(APP_NAME_KEY);
             TTAdManagerHolder.init(mContext, appid, appName);
 
+            Log.i(TAG, "loadInterstitial: appid:"+appid+ " appName:"+appName);
             TTAdManager ttAdManager = TTAdManagerHolder.get();
             //step2:(可选，强烈建议在合适的时机调用):申请部分权限，如read_phone_state,防止获取不了imei时候，下载类广告没有填充的问题。
             ttAdManager.requestPermissionIfNecessary(mContext);

@@ -1,5 +1,6 @@
 package com.mopub.mobileads;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
@@ -57,21 +58,30 @@ public class CSJAdapterConfiguration extends BaseAdapterConfiguration {
         Preconditions.checkNotNull(context);
         Preconditions.checkNotNull(listener);
         boolean networkInitializationSucceeded = false;
+        Class var5 = CSJAdapterConfiguration.class;
         synchronized(CSJAdapterConfiguration.class) {
             try {
-                if (configuration != null){
+                if (configuration != null && context instanceof Activity){
                     //step1:初始化sdk
                     String appid = configuration.get(APP_ID_KEY);
                     String appName = configuration.get(APP_NAME_KEY);
                     Log.i(TAG, "initializeNetwork: appid:"+appid + " appName:"+appName);
-                    if(appid!=null && appName!=null){
+                    if (TextUtils.isEmpty(appid)) {
+                        MoPubLog.log(MoPubLog.AdapterLogEvent.CUSTOM, new Object[]{"csj's initialization not started. Ensure csj's applicationKey is populated on the MoPub dashboard."});
+                    }else if(TextUtils.isEmpty(appName)){
+                        MoPubLog.log(MoPubLog.AdapterLogEvent.CUSTOM, new Object[]{"csj's initialization not started. Ensure csj's appName is populated on the MoPub dashboard."});
+                    }else {
                         TTAdManagerHolder.init(context,appid,appName);
+                        networkInitializationSucceeded = true;
                     }
+//                    if(appid!=null && appName!=null){
+//                        TTAdManagerHolder.init(context,appid,appName);
+//                    }
+//                    networkInitializationSucceeded = true;
                 }
-                networkInitializationSucceeded = true;
             } catch (Exception var8) {
                 Log.i(TAG, "initializeNetwork: Exception:"+var8);
-                MoPubLog.log(MoPubLog.AdapterLogEvent.CUSTOM_WITH_THROWABLE, new Object[]{"Initializing AdMob has encountered an exception.", var8});
+                MoPubLog.log(MoPubLog.AdapterLogEvent.CUSTOM_WITH_THROWABLE, new Object[]{"Initializing CSJ has encountered an exception.", var8});
             }
         }
 

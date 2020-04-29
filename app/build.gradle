@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
 
-
     defaultConfig {
         applicationId "com.shoppingstreet.idle"
         minSdkVersion 21
@@ -78,4 +77,12 @@ dependencies {
 // AppLovin
     implementation 'com.applovin:applovin-sdk:9.12.2'
     implementation 'com.mopub.mediation:applovin:9.12.2.0'
+
+    // ironSource
+    implementation 'com.ironsource.sdk:mediationsdk:6.16.0'
+    implementation 'com.mopub.mediation:ironsource:6.16.0.0'
+
+// Vungle
+    implementation 'com.vungle:publisher-sdk-android:6.5.3'
+    implementation 'com.mopub.mediation:vungle:6.5.3.0'
 }

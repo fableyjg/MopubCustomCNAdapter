@@ -7,6 +7,8 @@ package com.mopub.mobileads;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import com.mopub.common.logging.MoPubLog;
 import com.mopub.common.logging.MoPubLog.AdapterLogEvent;
@@ -21,6 +23,7 @@ import com.unity3d.ads.metadata.MediationMetaData;
 import java.util.Map;
 
 public class UnityInterstitial extends CustomEventInterstitial implements IUnityAdsExtendedListener {
+    private static final String TAG = "Unity yjg";
     private static final String ADAPTER_NAME = UnityInterstitial.class.getSimpleName();
     private CustomEventInterstitialListener mCustomEventInterstitialListener;
     private Context mContext;
@@ -34,6 +37,7 @@ public class UnityInterstitial extends CustomEventInterstitial implements IUnity
     }
 
     protected void loadInterstitial(Context context, CustomEventInterstitialListener customEventInterstitialListener, Map<String, Object> localExtras, Map<String, String> serverExtras) {
+        Log.i(TAG, "loadInterstitial: ");
         this.mPlacementId = UnityRouter.placementIdForServerExtras(serverExtras, this.mPlacementId);
         this.mCustomEventInterstitialListener = customEventInterstitialListener;
         this.mContext = context;

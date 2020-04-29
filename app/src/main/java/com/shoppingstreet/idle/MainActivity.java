@@ -21,6 +21,7 @@ import com.mopub.common.SdkConfiguration;
 import com.mopub.common.SdkInitializationListener;
 import com.mopub.common.logging.MoPubLog;
 import com.mopub.mobileads.CSJAdapterConfiguration;
+import com.mopub.mobileads.GDTAdapterConfiguration;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
@@ -91,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
         SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(rewardId)
                 .withMediationSettings()
                 .withAdditionalNetwork(CSJAdapterConfiguration.class.getName())
+//                .withAdditionalNetwork(GDTAdapterConfiguration.class.getName())
                 .withMediatedNetworkConfiguration(CSJAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
+//                .withMediatedNetworkConfiguration(GDTAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
                 .withLogLevel(MoPubLog.LogLevel.DEBUG)
                 .withLegitimateInterestAllowed(false)
                 .build();
@@ -107,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationFinished() {
            /* MoPub SDK initialized.
            Check if you should show the consent dialog here, and make your ad requests. */
-                setRewardListener();
-                MopubLoadReward();
+//                setRewardListener();
+//                MopubLoadReward();
 
                 setInterListener();
                 MopubLoadInter();
@@ -178,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onInterstitialFailed(MoPubInterstitial interstitial, MoPubErrorCode errorCode) {
-                Log.i(TAG, "onInterstitialFailed: ");
+                Log.i(TAG, "onInterstitialFailed: " + errorCode);
             }
 
             @Override
