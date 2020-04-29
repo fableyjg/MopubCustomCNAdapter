@@ -80,6 +80,7 @@ public class CSJInterstitial extends CustomEventInterstitial {
 
     //加载广告
     private void loadAd(String codeId, int orientation){
+        Log.i(TAG, "loadAd: ");
         //step4:创建广告请求参数AdSlot,具体参数含义参考文档
         AdSlot adSlot = new AdSlot.Builder()
                 .setCodeId(codeId)
