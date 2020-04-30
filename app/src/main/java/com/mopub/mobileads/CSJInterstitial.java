@@ -5,11 +5,9 @@ import android.content.Context;
 import android.util.Log;
 
 import com.bytedance.sdk.openadsdk.AdSlot;
-import com.bytedance.sdk.openadsdk.TTAdConstant;
 import com.bytedance.sdk.openadsdk.TTAdManager;
 import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTFullScreenVideoAd;
-import com.bytedance.sdk.openadsdk.TTInteractionAd;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;

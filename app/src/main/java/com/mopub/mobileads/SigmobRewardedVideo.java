@@ -6,11 +6,9 @@ import android.util.Log;
 import com.mopub.common.LifecycleListener;
 import com.mopub.common.MoPubReward;
 import com.mopub.common.logging.MoPubLog;
-import com.qq.e.ads.rewardvideo.RewardVideoAD;
-import com.qq.e.ads.rewardvideo.RewardVideoADListener;
-import com.qq.e.comm.managers.GDTADManager;
-import com.qq.e.comm.util.AdError;
+
 import com.sigmob.windad.WindAdError;
+import com.sigmob.windad.WindAds;
 import com.sigmob.windad.rewardedVideo.WindRewardAdRequest;
 import com.sigmob.windad.rewardedVideo.WindRewardInfo;
 import com.sigmob.windad.rewardedVideo.WindRewardedVideoAd;
@@ -58,7 +56,7 @@ public class SigmobRewardedVideo extends CustomEventRewardedVideo {
             mAdUnitRewardId = (String)serverExtras.get("adUnitRewardID");
             Log.i(TAG, "checkAndInitializeSdk: appId:"+appId + " adUnitRewardID:"+ mAdUnitRewardId);
 
-            if (GDTADManager.getInstance().isInitialized()) {
+            if (WindAds.isInited) {
                 return false;
             } else {
                 mSigmobAdapterConfiguration.setCachedInitializationParameters(launcherActivity, serverExtras);
