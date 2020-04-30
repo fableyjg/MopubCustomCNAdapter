@@ -21,7 +21,7 @@ import androidx.annotation.Nullable;
 
 public class SigmobRewardedVideo extends CustomEventRewardedVideo {
 
-    private static final String TAG = "gdt rv yjg";
+    private static final String TAG = "sigmob rv yjg";
     private static final String ADAPTER_NAME = SigmobRewardedVideo.class.getSimpleName();
     private WindRewardedVideoAd windRewardedVideoAd;
     private String mAdUnitRewardId;

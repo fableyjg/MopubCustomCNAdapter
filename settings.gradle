@@ -1,3 +1,4 @@
 rootProject.name='MopubCustomCNAdapter'
 include ':app'
 include ':csj'
+include ':gdt'
