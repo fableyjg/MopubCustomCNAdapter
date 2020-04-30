@@ -77,7 +77,7 @@ public class SigmobRewardedVideo extends CustomEventRewardedVideo {
     @Override
     protected void loadWithSdkInitialized(@NonNull Activity activity, @NonNull Map<String, Object> localExtras, @NonNull Map<String, String> serverExtras) throws Exception {
         if(windRewardedVideoAd!=null){
-            WindRewardAdRequest request = new WindRewardAdRequest(mAdUnitRewardId);
+            WindRewardAdRequest request = new WindRewardAdRequest(mAdUnitRewardId,null,null);
             windRewardedVideoAd.loadAd(request);
         }
     }
@@ -142,7 +142,7 @@ public class SigmobRewardedVideo extends CustomEventRewardedVideo {
                 MoPubLog.log(MoPubLog.AdapterLogEvent.CUSTOM, new Object[]{ADAPTER_NAME, "GDT rewarded video completed for placement " + mAdUnitRewardId});
             }
             MoPubLog.log(MoPubLog.AdapterLogEvent.SHOULD_REWARD, new Object[]{ADAPTER_NAME, -123, ""});
-            MoPubRewardedVideoManager.onRewardedVideoClosed(SigmobRewardedVideo.class, mAdUnitRewardId));
+            MoPubRewardedVideoManager.onRewardedVideoClosed(SigmobRewardedVideo.class, mAdUnitRewardId);
             MoPubLog.log(MoPubLog.AdapterLogEvent.CUSTOM, new Object[]{ADAPTER_NAME, "GDT rewarded video completed for placement " + mAdUnitRewardId});
         }
 
