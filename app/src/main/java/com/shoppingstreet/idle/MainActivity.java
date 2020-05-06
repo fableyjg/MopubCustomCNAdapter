@@ -26,6 +26,7 @@ import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
 import com.mopub.mobileads.MoPubRewardedVideos;
+import com.mopub.mobileads.SigmobAdapterConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -93,8 +94,10 @@ public class MainActivity extends AppCompatActivity {
                 .withMediationSettings()
                 .withAdditionalNetwork(CSJAdapterConfiguration.class.getName())
                 .withAdditionalNetwork(GDTAdapterConfiguration.class.getName())
+                .withAdditionalNetwork(SigmobAdapterConfiguration.class.getName())
                 .withMediatedNetworkConfiguration(CSJAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
                 .withMediatedNetworkConfiguration(GDTAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
+                .withMediatedNetworkConfiguration(SigmobAdapterConfiguration.class.getName(), mediatedNetworkConfiguration1)
                 .withLogLevel(MoPubLog.LogLevel.DEBUG)
                 .withLegitimateInterestAllowed(false)
                 .build();
@@ -110,11 +113,11 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationFinished() {
            /* MoPub SDK initialized.
            Check if you should show the consent dialog here, and make your ad requests. */
-                setRewardListener();
-                MopubLoadReward();
+//                setRewardListener();
+//                MopubLoadReward();
 
-//                setInterListener();
-//                MopubLoadInter();
+                setInterListener();
+                MopubLoadInter();
             }
         };
     }

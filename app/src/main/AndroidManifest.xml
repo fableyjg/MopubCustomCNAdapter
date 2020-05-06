@@ -49,6 +49,10 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
 
+        <activity android:name="com.sigmob.sdk.base.common.AdActivity"
+            android:theme="@android:style/Theme.DeviceDefault"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <provider

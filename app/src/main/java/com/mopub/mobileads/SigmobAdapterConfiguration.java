@@ -24,7 +24,7 @@ public class SigmobAdapterConfiguration extends BaseAdapterConfiguration {
     private static final String MOPUB_NETWORK_NAME = "sigmob";
 
     public static final String APP_ID_KEY = "appId";
-    public static final String APP_NAME_KEY = "appName";
+    public static final String APP_KEY = "appKey";
     
     @NonNull
     @Override
@@ -59,16 +59,21 @@ public class SigmobAdapterConfiguration extends BaseAdapterConfiguration {
         Class var5 = SigmobAdapterConfiguration.class;
         synchronized(SigmobAdapterConfiguration.class) {
             try {
-                if (configuration != null && context instanceof Activity){
+                Log.i(TAG, "initializeNetwork: 1111111111111 :"+(configuration != null));
+                if (configuration != null){
+                    Log.i(TAG, "initializeNetwork: 22222222222222222222222222");
                     //step1:初始化sdk
                     String appid = configuration.get(APP_ID_KEY);
-                    String appKey = configuration.get(APP_NAME_KEY);
+                    String appKey = configuration.get(APP_KEY);
                     Log.i(TAG, "initializeNetwork: appid:"+appid + " appKey:"+appKey);
                     if (TextUtils.isEmpty(appid)) {
+                        Log.i(TAG, "initializeNetwork: 3333333333333333333");
                         MoPubLog.log(MoPubLog.AdapterLogEvent.CUSTOM, new Object[]{"Sigmob's initialization not started. Ensure Sigmob's applicationKey is populated on the MoPub dashboard."});
                     }else if(TextUtils.isEmpty(appKey)){
+                        Log.i(TAG, "initializeNetwork: 44444444444444444444444");
                         MoPubLog.log(MoPubLog.AdapterLogEvent.CUSTOM, new Object[]{"Sigmob's initialization not started. Ensure Sigmob's appName is populated on the MoPub dashboard."});
                     }else {
+                        Log.i(TAG, "initializeNetwork: 5555555555555555555555555");
                         WindAds ads = WindAds.sharedAds();
                         ads.startWithOptions(context,new WindAdOptions(appid,appKey));
                         networkInitializationSucceeded = true;
