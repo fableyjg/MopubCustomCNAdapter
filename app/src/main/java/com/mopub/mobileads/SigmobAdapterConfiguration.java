@@ -23,7 +23,6 @@ public class SigmobAdapterConfiguration extends BaseAdapterConfiguration {
     private static final String ADAPTER_VERSION = "2.17.1.0";
     private static final String MOPUB_NETWORK_NAME = "sigmob";
 
-    // TODO: 2020/4/28 测试是否在adapter中初始化
     public static final String APP_ID_KEY = "appId";
     public static final String APP_NAME_KEY = "appName";
     

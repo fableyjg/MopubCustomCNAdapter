@@ -74,10 +74,6 @@ public class CSJAdapterConfiguration extends BaseAdapterConfiguration {
                         TTAdManagerHolder.init(context,appid,appName);
                         networkInitializationSucceeded = true;
                     }
-//                    if(appid!=null && appName!=null){
-//                        TTAdManagerHolder.init(context,appid,appName);
-//                    }
-//                    networkInitializationSucceeded = true;
                 }
             } catch (Exception var8) {
                 Log.i(TAG, "initializeNetwork: Exception:"+var8);

@@ -5,11 +5,9 @@ import android.content.Context;
 import android.util.Log;
 
 import com.bytedance.sdk.openadsdk.AdSlot;
-import com.bytedance.sdk.openadsdk.TTAdConstant;
 import com.bytedance.sdk.openadsdk.TTAdManager;
 import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTFullScreenVideoAd;
-import com.bytedance.sdk.openadsdk.TTInteractionAd;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -18,7 +16,7 @@ public class CSJInterstitial extends CustomEventInterstitial {
 
     private static final String TAG = "CSJInterstitial yjg";
 
-    public static final String AD_UNIT_ID_KEY = "adUnitID";
+    public static final String AD_UNIT_ID_KEY = "placementId";
     public static final String APP_ID_KEY = "appId";
     public static final String APP_NAME_KEY = "appName";
     public static final String APP_AD_ORIENTATION = "adOrientation";

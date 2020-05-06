@@ -26,7 +26,7 @@ import static com.mopub.common.logging.MoPubLog.AdapterLogEvent.CUSTOM;
 public class CSJRewardedVideo extends CustomEventRewardedAd {
     private static final String TAG = "CSJRewardedVideo yjg";
 
-    public static final String AD_UNIT_REWARD_ID_KEY = "adUnitRewardID";
+    public static final String AD_UNIT_REWARD_ID_KEY = "placementId";
     public static final String APP_ID_KEY = "appId";
     public static final String APP_NAME_KEY = "appName";
     public static final String APP_AD_ORIENTATION = "adOrientation";
@@ -188,7 +188,7 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
         public void onRewardVideoCached() {
             MoPubLog.log(CUSTOM, ADAPTER_NAME, "TTRewardVideoAd onRewardVideoCached...");
             if (mWeakActivity != null && mWeakActivity.get() != null)
-               Log.i(TAG, "onRewardVideoCached: ");
+                Log.i(TAG, "onRewardVideoCached: ");
 
         }
     };

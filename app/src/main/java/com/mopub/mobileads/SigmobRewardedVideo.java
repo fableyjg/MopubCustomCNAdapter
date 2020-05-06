@@ -24,6 +24,11 @@ public class SigmobRewardedVideo extends CustomEventRewardedAd {
 
     private static final String TAG = "sigmob rv yjg";
     private static final String ADAPTER_NAME = SigmobRewardedVideo.class.getSimpleName();
+
+    public static final String APP_ID_KEY = "appId";
+    public static final String APP_NAME_KEY = "appName";
+    public static final String AD_UNIT_ID_KEY = "placementId";
+
     private WindRewardedVideoAd windRewardedVideoAd;
     private WindRewardAdRequest request;
     private String mAdUnitRewardId;
@@ -43,9 +48,9 @@ public class SigmobRewardedVideo extends CustomEventRewardedAd {
     protected boolean checkAndInitializeSdk(@NonNull Activity launcherActivity, @NonNull Map<String, Object> localExtras, @NonNull Map<String, String> serverExtras) throws Exception {
         synchronized(SigmobRewardedVideo.class) {
             mActivity = launcherActivity;
-            String appId = (String)serverExtras.get("appId");
-            mAdUnitRewardId = (String)serverExtras.get("adUnitRewardID");
-            String appKey = serverExtras.get("appName");
+            String appId = (String)serverExtras.get(APP_ID_KEY);
+            mAdUnitRewardId = (String)serverExtras.get(AD_UNIT_ID_KEY);
+            String appKey = serverExtras.get(APP_NAME_KEY);
             Log.i(TAG, "checkAndInitializeSdk: appId:"+appId + " adUnitRewardID:"+ mAdUnitRewardId);
 
             if (WindAds.isInited) {
