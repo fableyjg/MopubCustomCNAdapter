@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class CSJAdapterConfiguration extends BaseAdapterConfiguration {
-    private static final String TAG = "CSJ con yjg";
+    private static final String TAG = "CSJ con";
     private static final String ADAPTER_VERSION = "2.1.5.0";
     private static final String MOPUB_NETWORK_NAME = "csj";
 

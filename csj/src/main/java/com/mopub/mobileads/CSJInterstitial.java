@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CSJInterstitial extends CustomEventInterstitial {
 
-    private static final String TAG = "CSJInterstitial yjg";
+    private static final String TAG = "CSJInterstitial";
 
     public static final String AD_UNIT_ID_KEY = "placementId";
     public static final String APP_ID_KEY = "appId";

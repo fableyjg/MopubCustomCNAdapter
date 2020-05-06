@@ -24,7 +24,7 @@ import androidx.annotation.Nullable;
 import static com.mopub.common.logging.MoPubLog.AdapterLogEvent.CUSTOM;
 
 public class CSJRewardedVideo extends CustomEventRewardedAd {
-    private static final String TAG = "CSJRewardedVideo yjg";
+    private static final String TAG = "CSJRewardedVideo";
 
     public static final String AD_UNIT_REWARD_ID_KEY = "placementId";
     public static final String APP_ID_KEY = "appId";
