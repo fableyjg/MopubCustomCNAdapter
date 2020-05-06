@@ -20,6 +20,10 @@ public class GDTRewardedVideo extends CustomEventRewardedAd {
 
     private static final String TAG = "gdt rv yjg";
     private static final String ADAPTER_NAME = GDTRewardedVideo.class.getSimpleName();
+
+    public static final String AD_UNIT_REWARD_ID_KEY = "placementId";
+    public static final String APP_ID_KEY = "appId";
+
     private RewardVideoAD rewardVideoAD;
     private String mAdUnitRewardId;
     private boolean isGdtRewardLoaded=false;
@@ -38,8 +42,8 @@ public class GDTRewardedVideo extends CustomEventRewardedAd {
 //        String adUnitRewardID = "2090845242931421";
 
         synchronized(GDTRewardedVideo.class) {
-            String appId = (String)serverExtras.get("appId");
-            mAdUnitRewardId = (String)serverExtras.get("adUnitRewardID");
+            String appId = (String)serverExtras.get(APP_ID_KEY);
+            mAdUnitRewardId = (String)serverExtras.get(AD_UNIT_REWARD_ID_KEY);
             Log.i(TAG, "checkAndInitializeSdk: appId:"+appId + " adUnitRewardID:"+ mAdUnitRewardId);
 
             if (GDTADManager.getInstance().isInitialized()) {

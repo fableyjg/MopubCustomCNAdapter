@@ -16,7 +16,7 @@ public class CSJInterstitial extends CustomEventInterstitial {
 
     private static final String TAG = "CSJInterstitial yjg";
 
-    public static final String AD_UNIT_ID_KEY = "adUnitID";
+    public static final String AD_UNIT_ID_KEY = "placementId";
     public static final String APP_ID_KEY = "appId";
     public static final String APP_NAME_KEY = "appName";
     public static final String APP_AD_ORIENTATION = "adOrientation";
