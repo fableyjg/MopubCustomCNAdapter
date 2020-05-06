@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class SigmobInterstitial extends CustomEventInterstitial {
 
-    private static final String TAG = "SigmobInterstitial yjg";
+    private static final String TAG = "SigmobInterstitial";
 
     public static final String AD_UNIT_ID_KEY = "adUnitID";
     public static final String APP_ID_KEY = "appId";

@@ -22,7 +22,7 @@ import androidx.annotation.Nullable;
 
 public class SigmobRewardedVideo extends CustomEventRewardedAd {
 
-    private static final String TAG = "sigmob rv yjg";
+    private static final String TAG = "sigmob rv";
     private static final String ADAPTER_NAME = SigmobRewardedVideo.class.getSimpleName();
 
     public static final String APP_ID_KEY = "appId";

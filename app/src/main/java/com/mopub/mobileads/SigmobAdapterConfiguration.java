@@ -19,7 +19,7 @@ import androidx.annotation.Nullable;
 
 public class SigmobAdapterConfiguration extends BaseAdapterConfiguration {
 
-    private static final String TAG = "Sigmob con yjg";
+    private static final String TAG = "Sigmob con";
     private static final String ADAPTER_VERSION = "2.17.1.0";
     private static final String MOPUB_NETWORK_NAME = "sigmob";
 

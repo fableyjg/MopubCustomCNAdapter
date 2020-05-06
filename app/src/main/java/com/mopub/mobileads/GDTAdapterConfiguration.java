@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class GDTAdapterConfiguration extends BaseAdapterConfiguration {
-    private static final String TAG = "GDT Adapter yjg";
+    private static final String TAG = "GDT Adapter";
     public static final String ADAPTER_VERSION = "4.191.1061.0";
     private static final String MOPUB_NETWORK_NAME = "gdt";
     private static final String ADAPTER_NAME = GDTAdapterConfiguration.class.getSimpleName();

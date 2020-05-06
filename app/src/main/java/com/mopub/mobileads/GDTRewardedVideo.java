@@ -18,7 +18,7 @@ import androidx.annotation.Nullable;
 
 public class GDTRewardedVideo extends CustomEventRewardedAd {
 
-    private static final String TAG = "gdt rv yjg";
+    private static final String TAG = "gdt rv";
     private static final String ADAPTER_NAME = GDTRewardedVideo.class.getSimpleName();
 
     public static final String AD_UNIT_REWARD_ID_KEY = "placementId";
