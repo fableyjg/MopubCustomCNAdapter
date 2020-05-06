@@ -16,7 +16,7 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class GDTRewardedVideo extends CustomEventRewardedVideo {
+public class GDTRewardedVideo extends CustomEventRewardedAd {
 
     private static final String TAG = "gdt rv yjg";
     private static final String ADAPTER_NAME = GDTRewardedVideo.class.getSimpleName();
@@ -67,13 +67,13 @@ public class GDTRewardedVideo extends CustomEventRewardedVideo {
 
     //3.判断广告是否已经加载
     @Override
-    protected boolean hasVideoAvailable() {
+    protected boolean isReady() {
         return isGdtRewardLoaded;
     }
 
     //4.实现show方法逻辑
     @Override
-    protected void showVideo() {
+    protected void show() {
         if(isReady()){
             rewardVideoAD.showAD();
         }else {
@@ -91,6 +91,8 @@ public class GDTRewardedVideo extends CustomEventRewardedVideo {
     protected void onInvalidate() {
 
     }
+
+
 
     RewardVideoADListener gdtRewardVideoADListener = new RewardVideoADListener() {
         @Override

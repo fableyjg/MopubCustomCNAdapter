@@ -132,7 +132,6 @@ public class UnityRewardedVideo extends CustomEventRewardedVideo implements IUni
             MoPubRewardedVideoManager.onRewardedVideoLoadSuccess(UnityRewardedVideo.class, placementId);
             MoPubLog.log(AdapterLogEvent.LOAD_SUCCESS, new Object[]{ADAPTER_NAME});
         }
-
     }
 
     public void onUnityAdsStart(String placementId) {
