@@ -16,10 +16,14 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class GDTRewardedVideo extends CustomEventRewardedVideo {
+public class GDTRewardedVideo extends CustomEventRewardedAd {
 
-    private static final String TAG = "gdt rv yjg";
+    private static final String TAG = "gdt rv";
     private static final String ADAPTER_NAME = GDTRewardedVideo.class.getSimpleName();
+
+    public static final String AD_UNIT_REWARD_ID_KEY = "placementId";
+    public static final String APP_ID_KEY = "appId";
+
     private RewardVideoAD rewardVideoAD;
     private String mAdUnitRewardId;
     private boolean isGdtRewardLoaded=false;
@@ -38,8 +42,8 @@ public class GDTRewardedVideo extends CustomEventRewardedVideo {
 //        String adUnitRewardID = "2090845242931421";
 
         synchronized(GDTRewardedVideo.class) {
-            String appId = (String)serverExtras.get("appId");
-            mAdUnitRewardId = (String)serverExtras.get("adUnitRewardID");
+            String appId = (String)serverExtras.get(APP_ID_KEY);
+            mAdUnitRewardId = (String)serverExtras.get(AD_UNIT_REWARD_ID_KEY);
             Log.i(TAG, "checkAndInitializeSdk: appId:"+appId + " adUnitRewardID:"+ mAdUnitRewardId);
 
             if (GDTADManager.getInstance().isInitialized()) {
@@ -67,13 +71,13 @@ public class GDTRewardedVideo extends CustomEventRewardedVideo {
 
     //3.判断广告是否已经加载
     @Override
-    protected boolean hasVideoAvailable() {
+    protected boolean isReady() {
         return isGdtRewardLoaded;
     }
 
     //4.实现show方法逻辑
     @Override
-    protected void showVideo() {
+    protected void show() {
         if(isReady()){
             rewardVideoAD.showAD();
         }else {
@@ -91,6 +95,8 @@ public class GDTRewardedVideo extends CustomEventRewardedVideo {
     protected void onInvalidate() {
 
     }
+
+
 
     RewardVideoADListener gdtRewardVideoADListener = new RewardVideoADListener() {
         @Override

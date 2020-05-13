@@ -113,11 +113,11 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationFinished() {
            /* MoPub SDK initialized.
            Check if you should show the consent dialog here, and make your ad requests. */
-//                setRewardListener();
-//                MopubLoadReward();
+                setRewardListener();
+                MopubLoadReward();
 
-                setInterListener();
-                MopubLoadInter();
+//                setInterListener();
+//                MopubLoadInter();
             }
         };
     }
