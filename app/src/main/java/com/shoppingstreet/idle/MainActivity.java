@@ -38,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
     private TTAdNative mTTAdNative;
     private TTRewardVideoAd mttRewardVideoAd;
     private TTFullScreenVideoAd mTTFullScreenVideoAd;
-
-    private String rewardId = "22bba3a92899446f9c8db8a43217b9c0";
-    private String interId = "bd4b5c57ec774540abb73dfa938a6a90";
+//Shopping mall 测试id
+//    private String rewardId = "22bba3a92899446f9c8db8a43217b9c0";
+//    private String interId = "bd4b5c57ec774540abb73dfa938a6a90";
+//fish go 测试id
+    private String rewardId = "39d12e9480d84b2a8da067d2554f390b";
+    private String interId = "c6f312ab19024d1bb5b439523f1f2e2a";
     private boolean isRewardLoaded = false;
 
     private MoPubInterstitial moPubInterstitial;
@@ -113,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationFinished() {
            /* MoPub SDK initialized.
            Check if you should show the consent dialog here, and make your ad requests. */
-                setRewardListener();
-                MopubLoadReward();
+//                setRewardListener();
+//                MopubLoadReward();
 
-//                setInterListener();
-//                MopubLoadInter();
+                setInterListener();
+                MopubLoadInter();
             }
         };
     }
@@ -285,6 +288,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onRewardVerify(boolean b, int i, String s) {
                         Log.i(TAG, "onRewardVerify: ");
+                    }
+
+                    @Override
+                    public void onSkippedVideo() {
+                        Log.i(TAG, "onSkippedVideo: ");
                     }
                 });
             }

@@ -91,7 +91,7 @@ public class CSJInterstitial extends CustomEventInterstitial {
         mTTAdNative.loadFullScreenVideoAd(adSlot, new TTAdNative.FullScreenVideoAdListener() {
             @Override
             public void onError(int i, String s) {
-                Log.i(TAG, "onError: " + s);
+                Log.i(TAG, "onError: error code："+ i + " errormsg:" + s);
                 if(mInterstitialListener!=null){
                     mInterstitialListener.onInterstitialFailed(getMoPubErrorCode(i));
                 }

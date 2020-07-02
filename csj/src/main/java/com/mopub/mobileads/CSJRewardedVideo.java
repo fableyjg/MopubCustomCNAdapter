@@ -245,6 +245,12 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
                 Log.i(TAG, "onRewardVerify: ");
             MoPubLog.log(CUSTOM, ADAPTER_NAME, "TTRewardVideoAd onRewardVerify...rewardVerify：" + rewardVerify + "，rewardAmount=" + rewardAmount + "，rewardName=" + rewardName);
         }
+
+        @Override
+        public void onSkippedVideo() {
+//            MoPubRewardedVideoManager.onRewardedVideoPlaybackError(CSJRewardedVideo.class,mAdUnitRewardId, MoPubErrorCode.UNSPECIFIED);
+            Log.i(TAG, "onSkippedVideo: ");
+        }
     };
 
 

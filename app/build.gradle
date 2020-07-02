@@ -4,7 +4,8 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.shoppingstreet.idle"
+//        applicationId "com.shoppingstreet.idle"
+        applicationId "com.whitedot.bfg"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -39,26 +40,26 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation('com.mopub:mopub-sdk:+@aar') {
+    implementation('com.mopub:mopub-sdk:5.8.0@aar') {
         transitive = true
     }
     // For banners
-    implementation('com.mopub:mopub-sdk-banner:+@aar') {
+    implementation('com.mopub:mopub-sdk-banner:5.8.0@aar') {
         transitive = true
     }
 
     // For interstitials
-    implementation('com.mopub:mopub-sdk-interstitial:+@aar') {
+    implementation('com.mopub:mopub-sdk-interstitial:5.8.0@aar') {
         transitive = true
     }
 
     // For rewarded videos. This will automatically also include interstitials
-    implementation('com.mopub:mopub-sdk-rewardedvideo:+@aar') {
+    implementation('com.mopub:mopub-sdk-rewardedvideo:5.8.0@aar') {
         transitive = true
     }
 
     // For native static (images).
-    implementation('com.mopub:mopub-sdk-native-static:+@aar') {
+    implementation('com.mopub:mopub-sdk-native-static:5.8.0@aar') {
         transitive = true
     }
 
