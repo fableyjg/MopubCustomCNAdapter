@@ -150,7 +150,12 @@ public class CSJRewardedVideo extends CustomEventRewardedAd {
         Log.i(TAG, "show: reward video");
         if(isReady() && mWeakActivity != null && mWeakActivity.get()!=null){
             mttRewardVideoAd.setRewardAdInteractionListener(mRewardAdInteractionListener);
-            mttRewardVideoAd.showRewardVideoAd(mActivity);
+            mActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mttRewardVideoAd.showRewardVideoAd(mActivity);
+                }
+            });
         }else {
             MoPubRewardedVideoManager.onRewardedVideoPlaybackError(CSJRewardedVideo.class,mAdUnitRewardId,MoPubErrorCode.NETWORK_NO_FILL);
         }
